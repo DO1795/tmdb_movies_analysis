@@ -1,0 +1,234 @@
+
+Budget/Revenue/Grossing
+1.0 Relationship between budget and popularity.
+1.1 Movies that had highest revenue for each year.
+1.2 Highest grossing movies for each year
+1.3 The most expensive movie made each year
+1.4 Is there any correlation between release date [period] and revenue?
+
+Actors
+2.0: Actors associated with high budget movies
+2.1: Actors that like to act together.
+2.2: Actors associated with highly rated movies.
+
+
+Directors
+3.0 Directors associated with high budget movies
+3.1 Directors associated with highly rated movies.
+
+Runtime
+4.1 Average runtime per year.
+4.2 Is runtime a factor in how people rate?
+4.3 Do runtime and budget have a correlation.
+4.4 Which genres have the longest run times?
+
+
+Genre
+5.0 Most popular genre
+5.1 Which genres make the most money
+
+
+Production Companies
+6.0 Production companies and the quality of their movies.
+6.2. Production companies that have made the most money through grossing.
+
+
+Bad rating
+13. Which movies did IMDB critics get it wrong?
+13.0: How vote average compares with revenue and popularity at the same time
+
+
+
+
+
+
+
+
+
+
+
+
+
+Data Description:
+Total rows: 10866
+
+Cast: 10790
+homepage: 2936 (drop)
+Director: 10822
+tagline: 8042 (drop)
+keywords: 9373 (drop)
+production companies: 9836
+
+
+Popularity:
+The mean is 0.65.
+The min is 0.000065
+The 25th percentile is 0.208
+The Median is 0.384
+The 75th percentile is 0.71
+The max is 32.99
+
+At first glance, there is a big skew in budget implying that there are relatively fewer big budget movies in the dataset
+
+On average movies last about 99-102 minutes long
+
+
+
+
+
+
+
+Data Cleaning:
+1. Drop Homepage, tagline, keyword, budget, revenue, overview
+
+2. Deal with missing values:
+2.1 Directors: check which movies have no directors and see if you can find the directors else input unknown director
+
+u_dict = {"Iliza Shlesinger: Freezing Hot": "Ryan Polito",
+"Sense8: Creating the World": "Josh Oreck",
+"With This Ring": "Nzingha Stewart",
+"Unlocking Sherlock": "Susannah Ward",
+"Dance-Off": "Alex Di Marco|Shane Harper|Kathryn McCormick|Finola Hughes|Carolyn Hennesy",
+"Top Gear: The Perfect Road Trip 2" : "Phil Churchward",
+"The Diary of Anne Frank": "George Stevens",
+"Paa": "R. Balki",
+"Doctor Who: The Waters of Mars" : "David Tennant|Graeme Harper|Russell T Davies|Peter O'Brien",
+"Scott Pilgrim vs. the Animation" : "Bryan Lee O'Malley",
+"Bo Burnham: Words, Words, Words" : "Shannon Hartman",
+"Across the Line: The Exodus of Charlie Wright" : "R. Ellis Frazier",
+"Listen to Your Heart" : "Matt Thompson",
+"Barbie in A Mermaid Tale" : "Adam L. Wood",
+"Doctor Who: A Christmas Carol" : "Toby Haynes|Matt Smith|Karen Gillan|Arthur Darvill|Michael Gambon",
+"The Making of The Walking Dead" : "Constantine Nasr",
+"Opeth: In Live Concert At The Royal Albert Hall" : "Marc Rovira",
+"Yu-Gi-Oh! 3D: Bonds Beyond Time" : "Kenichi Takeshita",
+"Kismat Konnection" : "Aziz Mirza",
+"Tropic Thunder: Rain of Madness" : "Ben Stiller",
+"Bill Burr: Why Do I Do This?" : "Shannon Hartman",
+"Foo Fighters: Live at Wembley Stadium" : "Nick Wickham",
+"Wizards On Deck With Hannah Montana" : "Victor Gonzalez",
+"Steve Jobs: One Last Thing" : "Mimi O'Connor|Sarah Fanthorpe",
+"Barbie in A Mermaid Tale 2": "William Lau",
+"Doctor Who: The Snowmen": "Saul Metzstein",
+"The Men Who Built America": "Patrick Reams",
+"The Brave Little Toaster to the Rescue": "Robert C. Ramirez",
+"Jinxed": "Stephen Herek",
+"Phineas and Ferb: Mission Marvel" : "Robert F. Hughes Sue",
+"Top Gear: The Perfect Road Trip": "Phil Churchward",
+"Russell Brand: Messiah Complex": "Michael Winterbottom",
+"La hora frÃ­a": "Elio Quiroga|Silke|Omar Muñoz|Pepo Oliva|Carola Manzanares",
+"Doctor Who: The Runaway Bride": "Euros Lyn",
+"Transformers: Beginnings": "Harold Hayes Jr.|Craig S. Philips|Michael White Jr",
+"Peter Pan": "David Cherkasskiy",
+"The Making of 'The Nightmare Before Christmas'" : "Henry Selick",
+"Magical Mystery Tour": "Paul McCartney|John Lennon|George Harrison|Ringo Starr|Bernard Knowles"
+}
+
+
+
+
+2.2 Genres: check which movies have  no genres and see if you can input them else input "unknown genres"     
+{"Belli di papÃ": "comedy",
+"All Hallows' Eve 2" : "horror",
+"Star Wars Rebels: Spark of Rebellion":"action|adventure|science fiction",
+"Prayers for Bobby": "drama",
+"Jonas Brothers: The Concert Experience": "music|children's film|concert",
+"Freshman Father": "drama",
+"Doctor Who: A Christmas Carol": "science fiction|fantasy",
+"Vizontele": "comedy|drama",
+"The Scapegoat": "drama",
+"Doctor Who: The Snowmen": "science fiction|fantasy",
+"Cousin Ben Troop Screening": "comedy",
+"Doctor Who: The Time of the Doctor": "science fiction",
+"Bombay Talkies": "drama",
+"Saw Rebirth": "horror|short",
+"Viaggi di nozze": "comedy",
+"T2 3-D: Battle Across Time": "action|science fiction|short",
+"Mom's Got a Date With a Vampire": "comedy|children's film|fantasy",
+"Goldeneye":"action|spy|adventure|thriller|action thriller",
+"The Amputee": "short",
+"The Party at Kitty and Stud's": "pornographic|erotica|romance|drama|softcore pornographic"}
+
+
+
+2.3 Production companies: "unknown production company" 
+
+2.4 Cast: Check for the cast online;
+{"Sanjay's Super Team" :  "Brent Schraff|Sunny Singh Attar|Arun Rao",
+"Winter on Fire: Ukraine's Fight for Freedom":"Bishop Agapit|Catherine Ashton|Serhii Averchenko|Kristina Berdinskikh|Julie DiFonzo|Pavlo Dobryanskyy|Valery Dovgiy|Bohdan Dubas",
+"Bitter Lake": "Joanne Herring|Mike Martin",
+"A Faster Horse": "Lee lacocca|Isaac Hagy|Prakash Patel|Gale Halderman|Hal Sperlich|Steve Denby",
+"The Mask You Live In": "Tony Porter|Byron Hurt|Jackson Katz|Ashly Burch|Philip Zimbardo",
+"The Hunting Ground": "Kirby Dick|Amy Ziering|Amy Herdy|St. Vincent|Kamilah Willingham|Andrea Pino",
+"Star Wars: TIE Fighter": "Guy Siner|Scott Lawrence|Denny Delk|Nick Jameson|Tris King",
+"All Hallows' Eve 2": "Damien Monier|Andrea Monier|Jonathan Nation|Bill Oberst Jr.",
+"Finding Vivian Maier": "Vivian Maier|John Maloof|Mary Ellen Mark|Phil Donahue|Tim Roth|Mary Baylaender",
+"The Search for General Tso": "Jennifer 8. Lee|MichaelTong|Phillip Chiang",
+"Last Days in Vietnam": "Stuart A. Herrington|Graham Martin|Ron Nessen|Pete McCloskey|Jim Laurie|Richard Nixon",
+"Cowspiracy: The Sustainability Secret": "Kip Anderson|Lisa Agabian|Bruce Hamilton|Kamyar Guivetchi|Howard Lyman|Heather Cooley",
+"No No: A Dockumentary": "Dock P. Ellis Jr.|Ron Howard|Larry Demery",
+"Happy Valley": "Sarah Lancashire|James Norton|Siobhan Finneran|Rhys Connah",
+"Kids for Cash": "Sandy Fonzo|Mark Ciavarella|Michael Conahan|Charlie Balasavage|Jim Avila",
+"Love Me": "Bob Morley|William Lodder|Bojana Novakovic|Hugo Weaving|Heather Mitchell",
+"Rich Hill":"Andrew Jewel|Harley Hood|Alyssa Jewel|Appachey West",
+"Pantani: The Accidental Death of a Cyclist" : "Marco Pantani|Conan Sweeny|Andrea Gambadoro|Lance Armstrong|Greg LeMond",
+"Emmet Otter's Jug-Band Christmas" : "Jim Henson|Richard Hunt|Jerry Nelson|Frank Oz|Eren Ozker|Dave Goelz|Marilyn Sokol",
+"Objectified": "Amber Shonts|Jony Ive|Dieter Rams|Naota Fukasawa|Karim Rashid|Marc Newson|Chris Bangle",
+"Alma": "Sophie willian|Siobhan Finneran|Lorraine Ashbourne|Jayde Adams|James Baxter|Dave Spikey|Nicholas Asbury",
+"Talhotblond": "Courteney Cox|Garret Dillahunt|Laura San Giacomo|Molly Hogan|Brando Eaton|Ashley Hinshaw",
+"Life Cycles": "Graham Agassiz|Thomas Sanderham|Cam McCaul|Brandon Semenuk|Riley McIntosh|Matt Hunter",
+"Wonders of the Solar System" : "Brian Cox|Richard Hoover|Carolyn Porco|Ralph Lorenz|Alan Hildebrand",
+"Tabloid" : "Joyce McKinney|Kent Gavin|Jeff Bosley|Jackson Shaw|Troy Williams",
+"The Making of The Walking Dead": "Chandler Riggs|Andrew Lincoln|Emma Bell|Sarah Wayne Callies|Laurie Holden|Michael Rooker",
+"Into Eternity": "Michael Madsen|Esko Roukola|Carl Reinhold|Peter Wikberg|Daniel Dencik",
+"Zeitgeist: Addendum" : "Peter Joseph|Jacque Fresco|Roxanne Meadows|George Carlin|John Perkins",
+"Wizards On Deck With Hannah Montana": "David Henrie|Brenda Song|Dylan Sprouse|Cole Sprouse",
+"Barbie: A Fairy Secret": "Diana Kaarina|Adrian Petriw|Tabitha St. Germain|Patricia Drake",
+"Urbanized": "Michael Sorkin|Rem Koolhaas|Gary Hustwit|Eduardo Paes",
+"Happiness Is a Warm Blanket, Charlie Brown": "Austin Lux|Amanda Pace|Trenton Rogers|Grace Rolek|Shane Baumel",
+"5 Broken Cameras":"Emad Burnat|Soraya|Gibreel|Taki-Ydin|Yasin",
+"The Maker": "Matthew Modine|Mary-Louise|Jonathan Rhys Meyers|Fairuza Balk|Michael Madsen|Kate McGregor",
+"There's Something Wrong with Aunt Diane": "Jesse Temple|Brad Katinas|Diane Schuler|Daniel Schuler|Warren Hance",
+"Steve Jobs: One Last Thing": "Bill Fernandez|Robert Palladino|Dean Hovey|Ross Perot|Demetri Goritsas",
+"Naqoyqatsi": "Belladonna|Marlon Brando|Elton John|Julia Louis-Dreyfus|Madonna",
+"Spellbound": "Harry Altman|Angela Arenivar|Ted Brigham|April DeGideo|Neil Kadakia|Nupur Lala|Emily Stagg|Ashley White",
+"Hungry For Change": "Mike Adams|Nick Bolton|James Caitlin|Kris Carr|James Colquhoun|Joe Cross|Harvey Diamond|Frank Ferrante",
+"2016: Obama's America": "Jay Bastian|Joe Biden|Cait Brasel|Gene Burris Jr.|Dinesh D'Souza|Alice Dewey|Lisa Fox|Zackary Steven Graham",
+"McCullin":"Harold Evans|Don McCullin|Michael Parkinson|Sue Ryder",
+"The Men Who Built America": "Eric Rolland|Adam Jonas Segaller|David Donahoe",
+"The Brave Little Toaster to the Rescue": "Deanna Oliver|Tim Stack|Roger Kabler|Eric Lloyd|Thurl Ravenscroft|Chris Young|Jessica Tuck",
+"Somm":"Dlynn Proctor|Dustin Wilson|Ian Cauble|Brian McClintic",
+"Trophy Kids": "Amari Avery|Derek Biale|Ian Fox|Justus Moore",
+"One Man Band":"Oja Kodar|Ingrid Bergman|Tim Brooke-Taylor|Michael Bryant|Graeme Garden|Charles Gray|Laurence Harvey|Jeanne Moreau|Orson Welles",
+"9": "Tim Burton|Elijah Wood|Jennifer Connelly",
+"Lifted": "Uriah Shelton|Dash Mihok|Lexi Alexander",
+"The Little Matchgirl": "Keshia Knight Pulliam|William Daniels|John Rhys-Davies|Jim Metzler|William Youmans|Hallie Foote|Maryedith Burrell|Rue McClanahan",
+"Peter & the Wolf": "Kirstie Alley|Ross Malinger|Lloyd Bridges|George Daugherty|David Ka Lik Wong",
+"Kiwi!": "Holly Shervey|Alison Bruce|Phil Peleton",
+"Encounters at the End of the World": "Werner Herzog|Scot Rowland|Henry Kaiser|Erik Nelson|Phil Fairclough|Dave Harding|Julian Hobbs",
+"Zeitgeist": "Chogyam Trungpa|Jordan Maxwell|George Carlin|Bill Hicks|David Ray Griffin|Joe Casaliggi|Condoleezza Rice|George W. Bush",
+"Loose Change: Final Cut": "Dylan Avery|Mahmoud Ahmad|Ahmed Al-Ghamdi|Hamza Al-Ghamdi|Saeed Al-Ghamdi",
+"Baraka": "Mark Magidson|Lisa Gerrard|Alton Walpole",
+"Tin Toy": "Tom Hanks|Tim Allen|Don Rickles|Jim Varney|Wallace Shawn|John Ratzenberger|Annie Potts|John Morris|Erik von Detten",
+"Powaqqatsi" : "Christie Brinkley|David Brinkley|Patrick Disanto|Pope John Paul II|Dan Rather",
+"Peter Pan": "Jaye Rosenberg|Phillip Hinton|Keith Scott|Daniel Floyd|Carol Adams|Olivia Martin|Ben Brennan",
+"The Big Shave": "T.T. Boy|Vladmir Correa|Mark Davis|Chantilly Lace|Jonathan Morgan|Stacey Nichols",
+"Luxo Jr.": "Jason Drucker|Tom Kane|Tara Strong|Drake Bell|Cree Summer|Cathy Weseluck|Nicolas Cantiu|Frank Welker"
+}
+
+
+
+Data Wrangling:
+1. Rename budget_adj to budget and revenue_adj to revenue.
+2. Break cast into fragments. Possibly Directors too.
+3. Break genre into fragments and put them in lower case.
+4. Break production companies into fragments and put them in lower case
+5. Deal with dates:
+5.0 Change release_date into datetime format
+5.1 Check if release date year == release year
+5.2 Create a month column
+5.3 Create a day column
+5.4 Create a quarter column
+6. Create Grossing column 
+
+
